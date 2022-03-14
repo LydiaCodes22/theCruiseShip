@@ -11,12 +11,16 @@ class Ship {
         this.currentLocation = 'at sea'
     }
 
-    dock (newPort) {
-        if(this.previousPort===this.itinerary.ports[this.itinerary.ports.length-2]) {
-            this.currentLocation = this.itinerary.ports[this.itinerary.ports.length-1]
-            console.log('You have reached your destination!')
-        }
-            this.currentLocation = this.itinerary.ports[this.itinerary.ports.indexOf(this.previousPort)+1]
+    dock () {
+        const portArray = this.itinerary.ports
+        const secondToLastPort = portArray[portArray.length-2]
+        const destinationPort = portArray[portArray.indexOf(this.previousPort)+1]
+        if(this.previousPort=== secondToLastPort) {
+            this.currentLocation = destinationPort
+            console.log(`Welcome to ${destinationPort.name}, this is your final destination!`)
+        } else {
+            this.currentLocation = destinationPort
+            console.log(`Welcome to ${destinationPort.name}!`)}
             //need to refactor - add variables so destination of values doesn't have to be repeatedly typed
         
     }
