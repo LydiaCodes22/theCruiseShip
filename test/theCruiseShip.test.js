@@ -23,6 +23,7 @@ describe('sail method', () => {
     const calais = new Port('Calais')
     const channelCrossing = new Itinerary(dover, calais)
     const ship = new Ship(channelCrossing)
+    const ship2 = new Ship(channelCrossing)
     it('updates the current location of the ship to show the ship is at sea', () => {
         expect(ship.currentLocation).toBe(dover)
         ship.sail()
@@ -30,6 +31,16 @@ describe('sail method', () => {
     })
     it('sets the previous port property to the current port', () => {
         expect(ship.previousPort).toEqual(dover)
+    })
+    it('throws an error if you try to sail beyond the last destination', () => {
+        ship2.sail()
+    ship2.dock()
+        expect(ship2.currentLocation).toEqual(calais)
+        expect( () => {
+            ship2.sail()
+            ship2.dock()
+            ship2.sail()
+        }).toThrow()
     })
 })
 
