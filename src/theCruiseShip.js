@@ -3,6 +3,7 @@ class Ship {
         this.itinerary = itinerary
         this.currentLocation = itinerary.ports[0]
         this.previousPort = null
+        this.currentLocation.currentShips.push(this)
     }
     
 
@@ -13,6 +14,7 @@ class Ship {
             throw 'No more sailing, you are at your destination.'
         }else{
         this.previousPort = this.currentLocation
+        this.currentLocation.removeShip(this)
         this.currentLocation = 'at sea'
     }
     }
@@ -23,13 +25,15 @@ class Ship {
         const secondToLastPort = portArray[portArray.length-2]
         const destinationPort = portArray[portArray.indexOf(this.previousPort)+1]
         if (this.currentLocation === lastPort) {
-            throw new Error ('No more sailing, you are at your destination.')
+            throw 'No more sailing, you are at your destination.'
         }else 
         if(this.previousPort=== secondToLastPort) {
             this.currentLocation = destinationPort
+            this.currentLocation.addShip(this)
             console.log(`Welcome to ${destinationPort.name}, this is your final destination!`)
         } else {
             this.currentLocation = destinationPort
+            this.currentLocation.addShip(this)
             console.log(`Welcome to ${destinationPort.name}!`)}
                     
     }
@@ -38,6 +42,19 @@ class Ship {
 class Port {
     constructor (name) {
         this.name = name
+        this.currentShips = []
+    }
+    addShip(shipAtPort) {
+        this.currentShips.push(shipAtPort)
+    }
+    removeShip(shipHasLeft) {
+        for( let i = 0; i < this.currentShips.length; i++){ 
+    
+            if ( this.currentShips[i] === shipHasLeft) { 
+        
+                this.currentShips.splice(i, 1); 
+            }
+        }
     }
 }
 

@@ -60,3 +60,4 @@ describe('dock method', () => {
        expect(braveShip.currentLocation).toEqual(beyond)
     })
     })
+    
