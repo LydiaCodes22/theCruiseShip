@@ -11,7 +11,7 @@ class Ship {
     const portArray = this.itinerary.ports
     const lastPort = portArray[portArray.length-1]
         if (this.currentLocation === lastPort) {
-            throw 'No more sailing, you are at your destination.'
+            throw console.log ('No more sailing, you are at your destination.')
         }else{
         this.previousPort = this.currentLocation
         this.currentLocation.removeShip(this)
@@ -25,7 +25,7 @@ class Ship {
         const secondToLastPort = portArray[portArray.length-2]
         const destinationPort = portArray[portArray.indexOf(this.previousPort)+1]
         if (this.currentLocation === lastPort) {
-            throw 'No more sailing, you are at your destination.'
+            throw console.log ('No more sailing, you are at your destination.')
         }else 
         if(this.previousPort=== secondToLastPort) {
             this.currentLocation = destinationPort
