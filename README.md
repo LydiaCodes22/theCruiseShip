@@ -1,7 +1,7 @@
 # The Cruise Ship
 
 ## Introduction to the project
-In this project I used Test Driven Development to build objects which gave a virtual cruise ship the functions of docking, sailing at various ports.
+In this project I used Test Driven Development to build objects which gave a virtual cruise ship the functions of docking at and sailing to various ports.
 
 ## Concepts
 - Domain Modelling
